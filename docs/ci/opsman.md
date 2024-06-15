@@ -1,13 +1,13 @@
 # Test operations package
 
 We use the functionality provided by the [test operations package] in order to
-manage components used during tests, specially e2e.
+manage components used during tests, especially e2e.
 
 The main functionality used currently in the tests is related to managing
 containers, the package exposes the function `StartComponent` which takes a
 container name (as defined in the [docker compose file]) and a variadic parameter
 with a set of condition functions to check when the container can be considered
-as ready. So we can call it without any condition like:
+as ready. So we can call it without any conditions like:
 ```go
 operations.StartComponent("my-container")
 ```
