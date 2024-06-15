@@ -49,7 +49,7 @@ IsTrustedSequencer=false
 **Default:** `0`
 
 **Description:** Last batch number before  a forkid change (fork upgrade). That implies that
-greater batch numbers are going to be trusted but no virtualized neither verified.
+greater batch numbers are going to be trusted but not virtualized nor verified.
 So after the batch number `ForkUpgradeBatchNumber` is virtualized and verified you could update
 the system (SC,...) to new forkId and remove this value to allow the system to keep
 Virtualizing and verifying the new batchs.
