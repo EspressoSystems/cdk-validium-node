@@ -39,7 +39,7 @@ Changes pushed to the `main` branch.
 
 ## test-e2e
 
-Runs e2e tests divided in several groups executed in parallel, read more about
+Runs e2e tests divided into several groups executed in parallel, read more about
 [CI groups].
 
 ### When is executed
@@ -65,7 +65,7 @@ these resources custom dependencies (as opposed to the golang packages required
 by the code).
 
 The goal of the `updatedeps` action is to keep these custom dependencies up to
-date. It checks the external resources with content required by this repo and
+date. It checks the external resources with the content required by this repo and
 proposes a PR in case it finds any changes. The code executed can be found in
 the [dependencies package].
 
