@@ -52,7 +52,7 @@ Additionally, the [`production-setup.md`](./production-setup.md) goes through th
 
 ## If you want to create Proofs:
 
-This mode is a tad more complicated, as it will require more services and more machines:
+This model is a tad more complicated, as it will require more services and more machines:
 
 Requirements for the Prover service (sans MT/Executor): 1TB RAM 128 cores
 
