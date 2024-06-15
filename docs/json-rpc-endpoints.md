@@ -34,7 +34,7 @@ If the endpoint is not in the list below, it means this specific endpoint is not
 - `eth_getTransactionByBlockNumberAndIndex` _* if the block number is set to pending we assume it is the latest; * allows an extra boolean parameter to query l2 extra information_
 - `eth_getTransactionByHash` _* allows an extra boolean parameter to query l2 extra information_
 - `eth_getTransactionCount`
-- `eth_getTransactionReceipt` _* doesn't include effectiveGasPrice. Will include once EIP1559 is implemented_
+- `eth_getTransactionReceipt` _* doesn't include effectiveGasPrice. Will include it once EIP1559 is implemented_
 - `eth_getUncleByBlockHashAndIndex` _* response is always empty_
 - `eth_getUncleByBlockNumberAndIndex` _* response is always empty_
 - `eth_getUncleCountByBlockHash` _* response is always zero_
