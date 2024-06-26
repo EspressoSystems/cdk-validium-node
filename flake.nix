@@ -35,13 +35,15 @@
             nixWithFlakes = pkgs.writeShellScriptBin "nix" ''
               exec ${pkgs.nixFlakes}/bin/nix --experimental-features "nix-command flakes" "$@"
             '';
-          in mkShell {
+          in
+          mkShell {
             buildInputs = [
               go
               protobuf
               docker
               docker-compose
 
+              git
               nixWithFlakes
               nixpkgs-fmt
             ];
@@ -49,7 +51,7 @@
               # avoid polluting system installed GOPATH
               export GOPATH=$PWD/.go-nix
               export PATH=$GOPATH/bin:$PATH
-            '';
+            '' + self.checks.${system}.pre-commit-check.shellHook;
           };
       });
 }
