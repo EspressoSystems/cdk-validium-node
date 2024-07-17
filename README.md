@@ -1,5 +1,32 @@
-# Polygon CDK Validium Node
+# Espresso Fork of Polygon CDK Validium Node
+Home of a special fork of Polygon CDK Validium Node working on the following modifications:
+1. Integrate Espresso Tiramisu as DA layer.
+2. Replace zkevm-prover with a special [SP1-based prover](https://github.com/EspressoSystems/zkrollup-integration/) supporting namespace proofs.
 
+## Getting Started
+To enter the development shell: `nix develop`
+
+Original Polygon CDK Validium Node docs below.
+
+## Polygon CDK Validium Node
+### Table of Contents
+[Run a CDK Validium](#run-a-cdk-validium)  
+    [Development](#development)  
+[Key Components](#key-components)  
+    [Aggregator](#aggregator)  
+    [Prover](#prover)   
+    [Sequencer](#sequencer)   
+    [SequenceSender](#sequencesender)   
+    [Synchronizer](#synchronizer)   
+    [Data Availability Configuration](#data-availability-configuration)   
+    [Executor](#executor)  
+    [EthTxManager](#ethtxmanager)  
+    [State](#state)  
+    [Pool](#pool)  
+    [JSON RPC](#json-rpc)  
+    [L2GasPricer](#l2gaspricer)  
+
+---
 For a full overview of the CDK-Validium please reference the [CDK documentation](https://wiki.polygon.technology/docs/cdk/).
 
 The CDK-Validium solution is made up of several components, start with the [CDK Validium Node](https://github.com/0xPolygon/cdk-validium-node). However, for quick reference, the complete list of components are outlined below:
