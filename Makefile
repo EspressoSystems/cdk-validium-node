@@ -60,6 +60,10 @@ check-python:
 check-curl:
 	@which curl > /dev/null || (echo "Error: curl is not installed" && exit 1)
 
+clean:
+	env GO111MODULE=on go clean -cache
+	rm -fr build/_workspace/pkg/ $(GOBIN)/*
+
 # Targets that require the checks
 build: check-go
 lint: check-go
@@ -164,6 +168,7 @@ generate-code-from-proto: ## Generates code from proto files
 	cd proto/src/proto/hashdb/v1 && protoc --proto_path=. --proto_path=../../../../include --go_out=../../../../../merkletree/hashdb --go-grpc_out=../../../../../merkletree/hashdb --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative hashdb.proto
 	cd proto/src/proto/executor/v1 && protoc --proto_path=. --go_out=../../../../../state/runtime/executor --go-grpc_out=../../../../../state/runtime/executor --go-grpc_opt=paths=source_relative --go_opt=paths=source_relative executor.proto
 	cd proto/src/proto/aggregator/v1 && protoc --proto_path=. --proto_path=../../../../include --go_out=../../../../../aggregator/prover --go-grpc_out=../../../../../aggregator/prover --go-grpc_opt=paths=source_relative --go_opt=paths=source_relative aggregator.proto
+	cd proto/src/proto/datastream/v1 && protoc --proto_path=. --proto_path=../../../../include --go_out=../../../../../state/datastream --go-grpc_out=../../../../../state/datastream --go-grpc_opt=paths=source_relative --go_opt=paths=source_relative datastream.proto
 
 ## Help display.
 ## Pulls comments from beside commands and prints a nicely formatted
