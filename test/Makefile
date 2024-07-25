@@ -614,8 +614,8 @@ run-sp1: ## Runs a full node with additional sp1-prover
 	$(RUNEVENTDB)
 	$(RUNL1NETWORK)
 	sleep 1
-	$(RUNZKPROVER)
 	$(RUNSP1PROVER)
+	$(RUNZKPROVER)
 	$(RUNAPPROVE)
 	sleep 3
 	$(RUNSYNC)
