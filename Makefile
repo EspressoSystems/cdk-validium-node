@@ -84,11 +84,13 @@ build: ## Builds the binary locally into ./dist
 
 .PHONY: build-docker
 build-docker: ## Builds a docker image with the node binary
-	docker build -t zkevm-node -f ./Dockerfile .
+	docker build -t zkevm-node -f ./docker/zkevm-node/Dockerfile .
+	docker build -t sp1-prover -f ./docker/sp1-prover/Dockerfile .
+
 
 .PHONY: build-docker-nc
 build-docker-nc: ## Builds a docker image with the node binary - but without build cache
-	docker build --no-cache=true -t zkevm-node -f ./Dockerfile .
+	docker build --no-cache=true -t zkevm-node -f ./docker/zkevm-node/Dockerfile .
 
 .PHONY: run-rpc
 run-rpc: ## Runs all the services needed to run a local zkEVM RPC node
