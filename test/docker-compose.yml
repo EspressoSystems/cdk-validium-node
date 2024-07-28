@@ -236,6 +236,24 @@ services:
       - "/bin/sh"
       - "-c"
       - "/app/zkevm-node run --network custom --custom-network-file /app/genesis.json --cfg /app/config.toml --components synchronizer"
+
+  zkevm-sync-sp1:
+    container_name: zkevm-sync-sp1
+    image: zkevm-node
+    ports:
+      - 9095:9091 # needed if metrics enabled
+    environment:
+      - ZKEVM_NODE_STATE_DB_HOST=zkevm-state-db
+      - ZKEVM_NODE_MTCLIENT_URI=sp1-prover-full:50061
+      - ZKEVM_NODE_EXECUTOR_URI=sp1-prover-full:50071
+    volumes:
+      - ./config/test.node.config.toml:/app/config.toml
+      - ./config/test.genesis.config.json:/app/genesis.json
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "/app/zkevm-node run --network custom --custom-network-file /app/genesis.json --cfg /app/config.toml --components synchronizer"
+
   zkevm-eth-tx-manager:
     container_name: zkevm-eth-tx-manager
     image: zkevm-node
@@ -523,6 +541,25 @@ services:
       - ./config/test.prover.config.json:/usr/src/app/config.json
     command: >
       zkProver -c /usr/src/app/config.json
+
+  sp1-prover: # complementary prover to zkevm-prover
+    container_name: sp1-prover
+    restart: unless-stopped
+    image: sp1-prover
+    environment:
+      - AGGREGATOR_URL=http://zkevm-aggregator:50081
+
+  sp1-prover-full: # completely replaces zkevm-prover
+    container_name: sp1-prover-full
+    restart: unless-stopped
+    image: sp1-prover
+    environment:
+      - AGGREGATOR_URL=http://zkevm-aggregator:50081
+      - HASHDB_PORT=50061
+      - EXECUTOR_PORT=50071
+    ports:
+      - 50061:50061 # MT
+      - 50071:50071 # Executor
 
   zkevm-approve:
     container_name: zkevm-approve
